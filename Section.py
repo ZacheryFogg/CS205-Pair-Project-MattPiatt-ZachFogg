@@ -19,53 +19,59 @@ class section():
 		self.enrollment = enrollment
 
 	#setters for all variables
-	def set_professor(self,professor):
+	def setProfessor(self,professor):
 		self.professor = professor
 
-	def set_section(self,char):
+	def setSection(self,char):
 		self.section = char
 
-	def set_time(self,time):
+	def setTime(self,time):
 		self.time = time
 
-	def set_duration(self, duration):
+	def setDuration(self, duration):
 		self.duration = duration
 
-	def set_location(self, location):
+	def setLocation(self, location):
 		self.location = location
 
-	def set_enrollment(self, enrollment):
+	def setEnrollment(self, enrollment):
 		self.enrollment = enrollment
 
 
 	# Display section information
-	def display_section_information(self):
+	def displaySectionInformation(self):
 		print("\n\nProfessor: " + str(self.professor) +"\n"
 			"Section: " + str(self.section) + "\nTime: " + str(self.time)
 			+"\nDuration: " + str(self.duration) +"\nLocation: " + str(self.location)
 			+"\nEnrollemnt: " + str(self.enrollment))
 
 	#Getters for all parameters
-	def get_professor(self):
+	def getProfessor(self):
 		print(self.professor)
+		return self.professor
 
-	def get_section(self):
+	def getSection(self):
 		print(str(self.section))
+		return self.section
 
-	def get_time(self):
+	def getTime(self):
 		print(str(self.time))
+		return self.time
 
-	def get_duration(self):
+	def getDuration(self):
 		print(self.duration)
+		return self.duration
 
-	def get_location(self):
+	def getLocation(self):
 		print(self.location)
+		return self.location
 
-	def get_enrollment(self):
+	def getEnrollment(self):
 		print(str(self.enrollment))
+		return self.enrollment
 
 def main():
 	test_section = section("dis dick","D","8:00","50 min","your moms", 2)
-	test_section.display_section_information()
+	test_section.displaySectionInformation()
 main()
 
