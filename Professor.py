@@ -18,7 +18,7 @@ class Professor:
         self.setOffice(office)
         self.setTenure(tenure)
         self.setRating(rating)
-        self.setCourseList(courseList) 
+        self.setCourseList(courseList)
     #setName accepts string of 0<length<=50
     def setName(self,name):
         if(len(name)>0 and len(name)<=50):
@@ -61,16 +61,16 @@ class Professor:
             self.addCourse(courseList[i])
     #addCourse, adds course to list, validates courses of duplicate names are not added
     def addCourse(self,course):
-        if(self.findCourse(course.getName())==-1)
+        if(self.findCourse(course.getCourseTitle())==-1)
             courseList.append(course)
         else:
             print("Professor "+ self.name +" already teaches a course ")
-            print("with the name "+ course.getName() + " and therefore ")
+            print("with the name "+ course.getCourseTitle() + " and therefore ")
             print("it will not be added to the list or courses")
     #findCourse, returns index of course, or -1 if a course by that name DNE
     def findCourse(self,courseName):
         for i in range(len(self.courseList)):
-            if (self.courseList[i].getCourseName() == courseName):
+            if (self.courseList[i].getCourseTitle() == courseName):
                 return i
             else:
                 print("The Course: " courseName + " was not found")
@@ -97,8 +97,8 @@ class Professor:
     #getTenure returns bool
     def getTenure(self):
         return tenure
-    #getName returns string
-    def getName(self):
+    #getProfName returns string
+    def getProfName(self):
         return name
     #getRating returns double
     def getRating(self):

@@ -86,16 +86,16 @@ class College:
     #addProf wil add the given Professor object if no object already
     #exists with the same name
     def addProf(self,prof):
-        if(self.findProf(prof.getName())==-1):
+        if(self.findProf(prof.getProfName())==-1):
             self.profList.append(prof)
         else:
-            print("A professor with the name" +prof.getName() +"already exists")
+            print("A professor with the name" +prof.getProfName() +"already exists")
             print("within" + self.collegeName + "and therefore will not be added")
     #findProf method returns the index of a Professor object with the given name
     #will return -1 if the cannot find a valid object
     def findProf(self,profName):
         for i in range(len(self.profList)):
-            if (self.profList[i].getName() == profName):
+            if (self.profList[i].getProfName() == profName):
                 return i
             else:
                 print("Professor " + profName + " was not found within the college" + self.collegeName)
