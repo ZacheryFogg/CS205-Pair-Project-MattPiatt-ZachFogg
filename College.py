@@ -1,7 +1,8 @@
 #College Class
+#Authored By Zachery Fogg
 
 #Imports
-import Professor.py
+import Professor
 #Class Declaration
 class College:
 
@@ -19,20 +20,27 @@ class College:
         self.setProfList(profList)
 
     #printCollege method will print the out a representation of the college
-    def printCollge(self):
+    def printCollege(self):
         print(self.collegeName)
-        print("Enrollment: " + self.collegeEnrollment)
+        print("Enrollment: " + str(self.collegeEnrollment))
         self.printMajors()
         self.printProfessors()
     #printMajors will print a list of the majors within the college
     def printMajors(self):
+        if(len(self.majorList)==0):
+            print("There are no majors in " + self.collegeName)
+            return
         print("List of Majors that exist within " + self.collegeName)
         print(self.majorList)
     #printProfessors will print a list of the professors within the college
     def printProfessors(self):
+        if(len(self.profList)==0):
+            print("There are no professors in " + self.collegeName)
+            return
         print("List of Professors that exist withing " + self.collegeName)
-        print(self.profList)
-
+        for i in range(len(self.profList)):
+            print(self.profList[i].getProfName() + ",", end =" ")
+        print("\n")
     #Standard Setters
     #setCollegeEnrollment will validate that value is 0<=enrollment<1000000
     def setCollegeEnrollment(self,collegeEnrollment):
@@ -40,7 +48,7 @@ class College:
             self.collegeEnrollment = collegeEnrollment
         else:
             print("College enrollment value is invalid. Must be 0<= Enrollment < 1000000")
-            print("College enrollment has been set to a defualt value of: " + self.defaultEnrollemnt)
+            print("College enrollment has been set to a defualt value of: " + str(self.defaultEnrollemnt))
     #setCollegeName will accept a string and validate for 0<length<=50
     def setCollegeName(self,collegeName):
         if(len(collegeName)>0 and len(collegeName)<=50):
@@ -63,16 +71,20 @@ class College:
             print("and will therefore not be added to the college")
     #findMajor, return index of major or -1 if DNE
     def findMajor(self,strMajor):
+        if(len(self.majorList)==0):
+            return -1
         for i in range(len(self.majorList)):
             if (self.majorList[i] == strMajor):
                 return i
-            else:
-                print(self.collegeName + " does not contain the major: " + strMajor)
-                return -1
-    #deleteMajor deletes major with given name
-    def deleteMajor(self,strMajor):
+        return -1
+        #print(self.collegeName + " does not currently contain the major: " + strMajor)
+
+    #delMajor deletes major with given name
+    def delMajor(self,strMajor):
         index = self.findMajor(strMajor)
-        if(!(index == -1)):
+        #print("Index: " + str(index))
+        #print(self.majorList[1])
+        if(not(index == -1)):
             self.majorList.pop(index)
             print("The Major: " + strMajor + " was deleted")
         else:
@@ -81,7 +93,7 @@ class College:
     #using the addProf method to validate that duplicates are not added
     def setProfList(self,profList):
         self.profList=[]
-        for in in range(len(profList)):
+        for i in range(len(profList)):
             self.addProf(profList[i])
     #addProf wil add the given Professor object if no object already
     #exists with the same name
@@ -94,12 +106,13 @@ class College:
     #findProf method returns the index of a Professor object with the given name
     #will return -1 if the cannot find a valid object
     def findProf(self,profName):
+        if(len(self.profList)==0):
+            return -1
         for i in range(len(self.profList)):
             if (self.profList[i].getProfName() == profName):
                 return i
-            else:
-                print("Professor " + profName + " was not found within the college" + self.collegeName)
-                return -1
+        #print("Professor " + profName + " was not found within the college" + self.collegeName)
+        return -1
     #getProf method, relies on index returned from findProf
     #returns a Professor object with the given object
     def getProf(self,profName):
@@ -109,17 +122,17 @@ class College:
         else:
             print("The professor with at index 0 will be returned instead")
             return profList[0]
-    #deleteProf will delete the Professor object with given name
-    def deleteProf(self,profName):
+    #delProf will delete the Professor object with given name
+    def delProf(self,profName):
             index = self.findProf(profName)
-            if(!(index == -1)):
+            if(not(index == -1)):
                 self.profList.pop(index)
                 print("The Prof: " + profName + " was deleted")
             else:
                 print("The Prof: " + profName + " was not found or deleted")
     #getCollegeEnrollment will return an integer
     def getCollegeEnrollment(self):
-        return self.getCollegeEnrollment
+        return self.collegeEnrollment
     #getCollegeName will return an integer
     def getCollegeName(self):
         return self.collegeName

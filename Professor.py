@@ -1,7 +1,8 @@
 #Professor Class
+#Authored By Zachery Fogg
 
 #Imports
-import Course.py
+import Course
 #Class Declaration
 class Professor:
 
@@ -19,6 +20,22 @@ class Professor:
         self.setTenure(tenure)
         self.setRating(rating)
         self.setCourseList(courseList)
+    #Method to print Professor Object
+    def printProfessor(self):
+        print("Name: "+ self.name)
+        print("Office: "+ self.office)
+        print("Tenure: "+ str(self.tenure))
+        print("Rating: "+ str(self.rating))
+        self.printCourseList()
+    #Method to print Course List
+    def printCourseList(self):
+        if(len(self.courseList)==0):
+            print(self.name + " does not currently teach any courses\n")
+            return
+        print(self.name + " currently teaches the following courses:")
+        for i in range(len(self.courseList)):
+            print(self.courseList[i].getCourseTitle() + ",",end=" ")
+        print("\n\n")
     #setName accepts string of 0<length<=50
     def setName(self,name):
         if(len(name)>0 and len(name)<=50):
@@ -38,14 +55,14 @@ class Professor:
     #setTenure will accept a boolean value or (0,1)
     def setTenure(self,tenure):
         if(tenure==0):
-            tenure=False
+            self.tenure=False
         elif(tenure==1):
-            tenure==True
+            self.tenure=True
         elif(type(tenure)==bool):
             self.tenure=tenure
         else:
             print("Invalid tenure input. Input must be boolean, 0, or 1")
-            print("Tenure has been set to "+ self.defaultTenure)
+            print("Tenure has been set to "+ str(self.defaultTenure))
             self.tenure=tenure
     #setRating will accept a double or integer 0-5
     def setRating(self,rating):
@@ -53,7 +70,7 @@ class Professor:
             self.rating = rating
         else:
             print("Rating must be a value of 0-5")
-            print("Rating has been set to default value of: " + self.defaultRating)
+            print("Rating has been set to default value of: " + str(self.defaultRating))
     #setCourseList, sets to new list defined by user, validates using addCourse method
     def setCourseList(self,courseList):
         self.courseList=[]
@@ -61,20 +78,21 @@ class Professor:
             self.addCourse(courseList[i])
     #addCourse, adds course to list, validates courses of duplicate names are not added
     def addCourse(self,course):
-        if(self.findCourse(course.getCourseTitle())==-1)
-            courseList.append(course)
+        if(self.findCourse(course.getCourseTitle())==-1):
+            self.courseList.append(course)
         else:
             print("Professor "+ self.name +" already teaches a course ")
             print("with the name "+ course.getCourseTitle() + " and therefore ")
             print("it will not be added to the list or courses")
     #findCourse, returns index of course, or -1 if a course by that name DNE
     def findCourse(self,courseName):
+        if(len(self.courseList)==0):
+            return -1
         for i in range(len(self.courseList)):
             if (self.courseList[i].getCourseTitle() == courseName):
                 return i
-            else:
-                print("The Course: " courseName + " was not found")
-                return -1
+        #print("The Course: " + courseName + " was not found")
+        return -1
     #getCourse returns the course if in list, or the first course in list if not
     #getCourse takes an index as argument
     def getCourse(self,courseName):
@@ -93,13 +111,13 @@ class Professor:
             print("The Course: " + courseName + " was not found or deleted")
     #getOffice returns string
     def getOffice(self):
-        return office
+        return self.office
     #getTenure returns bool
     def getTenure(self):
-        return tenure
+        return self.tenure
     #getProfName returns string
     def getProfName(self):
-        return name
+        return self.name
     #getRating returns double
     def getRating(self):
-        return rating
+        return self.rating

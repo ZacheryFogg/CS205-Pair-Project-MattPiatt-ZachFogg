@@ -5,7 +5,7 @@
 class section():
 	professor = None # name of professor teaching the course
 	section = None # section label, character
-	time = None # start time 
+	time = None # start time
 	duration = None # duration of class
 	location = None # location of class
 	enrollment = None # student enrollment in this section of class
@@ -70,8 +70,7 @@ class section():
 		print(str(self.enrollment))
 		return self.enrollment
 
-def main():
-	test_section = section("dis dick","D","8:00","50 min","your moms", 2)
-	test_section.displaySectionInformation()
-main()
-
+#def main():
+#	test_section = section("dis dick","D","8:00","50 min","your moms", 2)
+#	test_section.displaySectionInformation()
+#main()

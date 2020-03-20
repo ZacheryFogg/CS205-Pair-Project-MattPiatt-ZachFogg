@@ -1,4 +1,4 @@
-# Course class 
+# Course class
 
 #Author: Matthew Piatt
 import Section
@@ -7,10 +7,10 @@ import Section
 class Course:
 	courseTitle = None ;
 	credits = 0;
-	sections = list(()); 
-	#default constructor, sections need to be updated manually. Defaults to empty list  
+	sections = list(());
+	#default constructor, sections need to be updated manually. Defaults to empty list
 	def __init__(self, title, credits):
-		self.course_title = title
+		self.courseTitle = title
 		self.credits = credits
 		self.sections = list(())
 
@@ -35,20 +35,19 @@ class Course:
 
 	#def get_credits(self):
 	#	print(str(credits))
-
+		pass
 	def getCourseTitle(self):
-		print("Course title: " + self.courseTitle)
+		#print("Course title: " + self.courseTitle)
 		return self.courseTitle
 
 	def getSections(self):
 		print("Sections: " + str(self.sections))
-		return self.sections 
+		return self.sections
 
-def main():
-	test_course = Course("Random",3)
+#def main():
+	#test_course = Course("Random",3)
 	#test_course.get_credits()
-	test_course.displayCourseInfo()
+	#test_course.displayCourseInfo()
 
 
-main()
-
+#main()

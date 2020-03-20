@@ -1,13 +1,11 @@
-#Main Program where testing and demonstration will take place
+#Main Program to demonstrate functionality
+#Testing will be done in unittests.py
 
 
 #Inclusion of various files
-
-
-#Unit testing of University Class
-
-
-#Unit testing of College Class
-
-
-#Unit testing of Professor Class
+import Simulation
+#Main Program
+def main():
+    sim = Simulation.Simulation()
+    sim.run()
+main()
