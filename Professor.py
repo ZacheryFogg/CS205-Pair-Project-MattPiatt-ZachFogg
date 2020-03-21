@@ -36,20 +36,20 @@ class Professor:
         for i in range(len(self.courseList)):
             print(self.courseList[i].getCourseTitle() + ",",end=" ")
         print("\n\n")
-    #setName accepts string of 0<length<=50
+    #setName accepts string of 0<length
     def setName(self,name):
-        if(len(name)>0 and len(name)<=50):
+        if(len(name)>0):
             self.name = name;
         else:
-            print("Name length cannot be 0 or exceed 50")
+            print("Name length cannot be 0")
             print("Name set to default: " + self.defaultName)
             self.name=defaultName
-    #setOffice accepts a string of 0<length<=50
+    #setOffice accepts a string of 0<length
     def	setOffice(self,office):
-        if(len(office)>0 and len(office)<=50):
+        if(len(office)>0):
             self.office = office;
         else:
-            print("Office name length cannot be 0 or exceed 50")
+            print("Office name length cannot be 0")
             print("Office set to default: " + self.defaultOffice)
             self.office=defaultOffice
     #setTenure will accept a boolean value or (0,1)

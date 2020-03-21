@@ -49,12 +49,12 @@ class College:
         else:
             print("College enrollment value is invalid. Must be 0<= Enrollment < 1000000")
             print("College enrollment has been set to a defualt value of: " + str(self.defaultEnrollemnt))
-    #setCollegeName will accept a string and validate for 0<length<=50
+    #setCollegeName will accept a string and validate for 0<length
     def setCollegeName(self,collegeName):
-        if(len(collegeName)>0 and len(collegeName)<=50):
+        if(len(collegeName)>0):
             self.collegeName=collegeName
         else:
-            print("Invalid college name length given; cannot be 0 or exceed 50")
+            print("Invalid college name length given; cannot be 0")
             print("College name set to default value: " + defaultCollegeName)
             self.collegeName=defaultCollegeName
     #setMajorList erases current list and sets new on using addMajor to validate input

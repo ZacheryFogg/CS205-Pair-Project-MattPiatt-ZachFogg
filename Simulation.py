@@ -94,3 +94,11 @@ class Simulation:
         print("John Does does teach CS 319")
     print("Professor John Doe after Alterations:\n")
     self.john.printProfessor()
+
+    self.dne = College.College("DNE", 200000, [],[])
+
+    list1 = self.uni.getCollegeList()
+    print(*list1)
+    self.uni.addCollege(self.dne)
+    list2 = self.uni.getCollegeList()
+    print(*list2)
