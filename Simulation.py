@@ -86,7 +86,7 @@ class Simulation:
     self.john.setTenure(1)
     self.john.setRating(4.0)
     self.john.setOffice("Dicovery 501")
-    #Try and Find a cours
+    #Try and Find a course
     index4= self.john.findCourse("CS 319")
     if(index4==-1):
         print("John Doe does not teach CS 319")
@@ -94,3 +94,21 @@ class Simulation:
         print("John Does does teach CS 319")
     print("Professor John Doe after Alterations:\n")
     self.john.printProfessor()
+
+    #Demonstration of Course and section class
+    print("\n\nOriginal course before alterations: \n\n")
+    self.cs127.displayCourseInfo()
+    #self.cs127.addSection() #Uncomment these to build section manually. 
+    #self.cs127.addSection()
+
+    self.cs127Section = Section.section("Professor", "B", "4:20", "50 min", "Votey 107", 54)
+    self.cs127.addSection(self.cs127Section)
+
+    self.cs127.displaySection("A")
+    self.cs127.displaySection("B")
+    self.cs127.setCourseTitle("cs1127")
+    self.cs127.setCredits("4")
+    print("\n\nAltered course: \n\n")
+    self.cs127.displayCourseInfo()
+    self.cs127.displayAllSections()
+
