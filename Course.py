@@ -51,7 +51,7 @@ class Course:
 			returnString += str(section) + ", "
 		returnString = returnString[:-2]
 		print(returnString)
-	def get_credits(self):
+	def getCredits(self):
 		return self.credits
 
 	def getCourseTitle(self):
@@ -59,7 +59,7 @@ class Course:
 		return self.courseTitle
 
 	def getSections(self):
-		print("Sections: " + str(self.sections))
+		#print("Sections: " + str(self.sections))
 		return self.sections
 
 	def displaySection(self, sectionChar):
