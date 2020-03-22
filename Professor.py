@@ -9,7 +9,7 @@ class Professor:
     #Constructor
     def __init__(self,name,office,tenure,rating,courseList):
         #Default Value
-        self.defaultName = "Generic Name"
+        self.defaultName = "Gener IcnAme"
         self.defaultOffice ="Building 101"
         self.defaultTenure = False
         self.defaultRating = 0.0
@@ -43,7 +43,7 @@ class Professor:
         else:
             print("Name length cannot be 0")
             print("Name set to default: " + self.defaultName)
-            self.name=defaultName
+            self.name=self.defaultName
     #setOffice accepts a string of 0<length
     def	setOffice(self,office):
         if(len(office)>0):
@@ -51,7 +51,7 @@ class Professor:
         else:
             print("Office name length cannot be 0")
             print("Office set to default: " + self.defaultOffice)
-            self.office=defaultOffice
+            self.office=self.defaultOffice
     #setTenure will accept a boolean value or (0,1)
     def setTenure(self,tenure):
         if(tenure==0):
@@ -63,12 +63,13 @@ class Professor:
         else:
             print("Invalid tenure input. Input must be boolean, 0, or 1")
             print("Tenure has been set to "+ str(self.defaultTenure))
-            self.tenure=tenure
+            self.tenure=self.defaultTenure
     #setRating will accept a double or integer 0-5
     def setRating(self,rating):
         if(rating>=0 and rating<=5):
             self.rating = rating
         else:
+            self.rating = self.defaultRating
             print("Rating must be a value of 0-5")
             print("Rating has been set to default value of: " + str(self.defaultRating))
     #setCourseList, sets to new list defined by user, validates using addCourse method
@@ -96,11 +97,12 @@ class Professor:
     #getCourse returns the course if in list, or the first course in list if not
     #getCourse takes an index as argument
     def getCourse(self,courseName):
-        if(index>=0 and index<len(courseList)):
-            return courseList[index]
+        index = self.findCourse(courseName)
+        if(index>=0 and index<len(self.courseList)):
+            return self.courseList[index]
         else:
             print("The course at index 0 will be returned instead")
-            return courseList[0]
+            return self.courseList[0]
     #delCourse method, deletes course with given name
     def delCourse(self,courseName):
         index = self.findCourse(courseName)
@@ -121,3 +123,5 @@ class Professor:
     #getRating returns double
     def getRating(self):
         return self.rating
+    def getCourseList(self):
+        return self.courseList

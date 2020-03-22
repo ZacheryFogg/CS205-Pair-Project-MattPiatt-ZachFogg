@@ -44,9 +44,10 @@ class College:
     #Standard Setters
     #setCollegeEnrollment will validate that value is 0<=enrollment<1000000
     def setCollegeEnrollment(self,collegeEnrollment):
-        if(collegeEnrollment>=0 and collegeEnrollment<1000000):
+        if(collegeEnrollment >=0 and collegeEnrollment<1000000):
             self.collegeEnrollment = collegeEnrollment
         else:
+            self.collegeEnrollment = self.defaultEnrollemnt
             print("College enrollment value is invalid. Must be 0<= Enrollment < 1000000")
             print("College enrollment has been set to a defualt value of: " + str(self.defaultEnrollemnt))
     #setCollegeName will accept a string and validate for 0<length
@@ -55,8 +56,8 @@ class College:
             self.collegeName=collegeName
         else:
             print("Invalid college name length given; cannot be 0")
-            print("College name set to default value: " + defaultCollegeName)
-            self.collegeName=defaultCollegeName
+            print("College name set to default value: " + self.defaultCollegeName)
+            self.collegeName=self.defaultCollegeName
     #setMajorList erases current list and sets new on using addMajor to validate input
     def setMajorList(self,majorList):
         self.majorList=[]
@@ -117,11 +118,11 @@ class College:
     #returns a Professor object with the given object
     def getProf(self,profName):
         index = self.findProf(profName)
-        if(index>=0 and index<len(profList)):
-            return profList[index]
+        if(index>=0 and index<len(self.profList)):
+            return self.profList[index]
         else:
             print("The professor with at index 0 will be returned instead")
-            return profList[0]
+            return self.profList[0]
     #delProf will delete the Professor object with given name
     def delProf(self,profName):
             index = self.findProf(profName)
@@ -136,3 +137,7 @@ class College:
     #getCollegeName will return an integer
     def getCollegeName(self):
         return self.collegeName
+    def getMajorList(self):
+        return self.majorList
+    def getProfList(self):
+        return self.profList
