@@ -10,13 +10,19 @@ class section():
 	location = None # location of class
 	enrollment = None # student enrollment in this section of class
 
+
+	#Note: sections are differentiated by their section character.
 	def __init__(self,professor,section,time,duration,location,enrollment):
 		self.professor = professor
-		self.section = section
+		self.section = section.upper()
 		self.time = time
 		self.duration = duration
 		self.location = location
 		self.enrollment = enrollment
+
+	#Overwriting default string method. Will only return the section character.
+	def __str__(self):
+		return self.section
 
 	#setters for all variables
 	def setProfessor(self,professor):
@@ -47,30 +53,19 @@ class section():
 
 	#Getters for all parameters
 	def getProfessor(self):
-		print(self.professor)
 		return self.professor
 
 	def getSection(self):
-		print(str(self.section))
 		return self.section
 
 	def getTime(self):
-		print(str(self.time))
 		return self.time
 
 	def getDuration(self):
-		print(self.duration)
 		return self.duration
 
 	def getLocation(self):
-		print(self.location)
 		return self.location
 
 	def getEnrollment(self):
-		print(str(self.enrollment))
 		return self.enrollment
-
-#def main():
-#	test_section = section("dis dick","D","8:00","50 min","your moms", 2)
-#	test_section.displaySectionInformation()
-#main()
