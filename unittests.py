@@ -15,6 +15,9 @@ class TestModel(unittest.TestCase):
     #Sufix Col indicates a College object
     #Sufix Prof indicates a Professor object
     #Sufix Cour indicates a Course Object
+
+
+    #Zachs Objects
     self.uvmUni = University.University("UVM", 12000, "Burlington, Vermont", 18000, 45000,[])
 
     self.cemsCol = College.College("CEMS", 2000, [],[])
@@ -31,6 +34,13 @@ class TestModel(unittest.TestCase):
     self.cs424Cour = Course.Course("CS 424", 18)
     self.cs319Cour = Course.Course("CS 319", 3)
     self.cs205Cour = Course.Course("CS 205", 3)
+
+    #Matts Objects
+    self.course1 = Course.Course("title",3)
+    self.section1 = Section.section("Professor", "Section","time","duration","location", "enrollment")
+    self.section2 = Section.section("Professor", "Section","time","duration","location", "enrollment")
+
+
   def tearDown(self):
     # called after every test
     print('tearDown()')
@@ -207,6 +217,55 @@ class TestModel(unittest.TestCase):
 
 
 
+
+  def testCourseSetMethods(self):
+	  #Should change credit value to 2
+      self.course1.setCredits(2)
+      self.assertEqual(self.course1.getCredits(),2)
+
+      #Should change title to CS205
+      self.course1.setCourseTitle("CS205")
+      self.assertEqual(self.course1.getCourseTitle(),"CS205")
+
+  def testSectionSetMethods(self):
+      #should set section professor to Jason Hibbeler
+      self.section1.setProfessor("Jason Hibbeler")
+      self.assertEqual(self.section1.getProfessor(),"Jason Hibbeler")
+
+      #Should set section to B
+      self.section1.setSection("B")
+      self.assertEqual(self.section1.getSection(),"B")
+
+      #Should set time to "3:30"
+      self.section1.setTime("3:30")
+      self.assertEqual(self.section1.getTime(), "3:30")
+
+      #Should set duration to 50 min
+      self.section1.setDuration("50 min")
+      self.assertEqual(self.section1.getDuration(),"50 min")
+
+      #Should set location to "Votey 209"
+      self.section1.setLocation("Votey 209")
+      self.assertEqual(self.section1.getLocation(), "Votey 209")
+
+      #should set enrollment to 40
+      self.section1.setEnrollment(40)
+      self.assertEqual(self.section1.getEnrollment(), 40)
+
+  def testAddSectionMethods(self):
+      #Add sections, when added length should increase by 1
+      self.course1.addSection(self.section1)
+      self.assertEqual(len(self.course1.sections), 1)
+
+      self.course1.addSection(self.section2)
+      self.assertEqual(len(self.course1.sections), 2)
+
+      #remove sections, when removed length should decrease by 1
+      self.course1.removeSection(self.section2)
+      self.assertEqual(len(self.course1.sections),1)
+
+      #Check that the correct section was removed (therefore self.section1 should still be the only section)
+      self.assertEqual(self.course1.sections[0], self.section1)
 
 
 
