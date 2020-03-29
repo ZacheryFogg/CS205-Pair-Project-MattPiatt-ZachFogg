@@ -11,8 +11,8 @@ class courseAndSectionTest(unittest.TestCase):
 	#Creating section and course objects to be used in testing
 	def setUp(self):
 		self.course1 = Course.Course("title",3)
-		self.section1 = Section.section("Professor", "Section","time","duration","location", "enrollment")
-		self.section2 = Section.section("Professor", "Section","time","duration","location", "enrollment")
+		self.section1 = Section.section("Professor", "A","8:30","20 min","Discovery 403", "1")
+		self.section2 = Section.section("Professor", "B","4:20","20 min","Discovery 403", "2")
 
 
 
