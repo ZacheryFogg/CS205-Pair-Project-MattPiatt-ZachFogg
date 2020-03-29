@@ -25,7 +25,13 @@ class Course:
 			self.credits = creditValue
 
 	def setCourseTitle(self, newTitle):
-		self.courseTitle = newTitle
+		if newTitle.isspace(): #empty string
+			print("Invalid input for title, must input a string\n")
+			print("Defaulting to course title for course title")
+			self.courseTitle = "course title"
+
+		else:
+			self.courseTitle = newTitle
 
 	def addSection(self, sectionObj=None):
 
