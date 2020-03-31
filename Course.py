@@ -5,22 +5,33 @@ import Section
 
 
 class Course:
-	courseTitle = None ;
+	courseTitle = None;
 	credits = 0;
 	sections = list(());
 	#default constructor, sections need to be updated manually. Defaults to empty list
 	def __init__(self, title, credits):
-		self.courseTitle = title
-		self.credits = credits
+		self.setCourseTitle(title)
+		self.setCredits(credits)
 		self.sections = list(())
 
 	# can change the course title, credits, or sections through public methods
 
 	def setCredits(self, creditValue):
-		self.credits = creditValue
+		if int(creditValue) < 0 :
+			print("Invalid credit value. Value must be a non negative integer \n")
+			print("Defaulting to 0 credits\n\n")
+			self.credits = 0
+		else: #valid credit value
+			self.credits = creditValue
 
 	def setCourseTitle(self, newTitle):
-		self.courseTitle = newTitle
+		if newTitle.isspace(): #empty string
+			print("Invalid input for title, must input a string\n")
+			print("Defaulting to course title for course title")
+			self.courseTitle = "course title"
+
+		else:
+			self.courseTitle = newTitle
 
 	def addSection(self, sectionObj=None):
 
@@ -79,9 +90,6 @@ class Course:
 
 # def main():
 # 	course1 = Course("default",3)
-# 	course1.addSection()
-# 	course1.displayCourseInfo()
-# 	course1.displaySection("A")
-# 	course1.displaySection("B")
+# 	print(course1.getCredits())
 
 # main()
