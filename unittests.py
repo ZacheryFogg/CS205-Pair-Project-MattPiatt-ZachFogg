@@ -37,8 +37,8 @@ class TestModel(unittest.TestCase):
 
     #Matts Objects
     self.course1 = Course.Course("title",3)
-    self.section1 = Section.section("Professor", "Section","time","duration","location", "enrollment")
-    self.section2 = Section.section("Professor", "Section","time","duration","location", "enrollment")
+    self.section1 = Section.section("Professor", "A","8:30","20 min","Discovery 403", "1")
+    self.section2 = Section.section("Professor", "B","4:20","20 min","Discovery 403", "2")
 
 
   def tearDown(self):
@@ -218,8 +218,8 @@ class TestModel(unittest.TestCase):
 
 
 
-  def testCourseSetMethods(self):
-	  #Should change credit value to 2
+  def test_CourseSetMethods(self):
+      #Should change credit value to 2
       self.course1.setCredits(2)
       self.assertEqual(self.course1.getCredits(),2)
 
@@ -227,7 +227,7 @@ class TestModel(unittest.TestCase):
       self.course1.setCourseTitle("CS205")
       self.assertEqual(self.course1.getCourseTitle(),"CS205")
 
-  def testSectionSetMethods(self):
+  def test_SectionSetMethods(self):
       #should set section professor to Jason Hibbeler
       self.section1.setProfessor("Jason Hibbeler")
       self.assertEqual(self.section1.getProfessor(),"Jason Hibbeler")
@@ -252,7 +252,7 @@ class TestModel(unittest.TestCase):
       self.section1.setEnrollment(40)
       self.assertEqual(self.section1.getEnrollment(), 40)
 
-  def testAddSectionMethods(self):
+  def test_AddSectionMethods(self):
       #Add sections, when added length should increase by 1
       self.course1.addSection(self.section1)
       self.assertEqual(len(self.course1.sections), 1)
@@ -266,11 +266,6 @@ class TestModel(unittest.TestCase):
 
       #Check that the correct section was removed (therefore self.section1 should still be the only section)
       self.assertEqual(self.course1.sections[0], self.section1)
-
-
-
-
-
 
 
 
