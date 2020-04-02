@@ -54,11 +54,7 @@ class Professor:
             self.office=self.defaultOffice
     #setTenure will accept a boolean value or (0,1)
     def setTenure(self,tenure):
-        if(tenure==0):
-            self.tenure=False
-        elif(tenure==1):
-            self.tenure=True
-        elif(type(tenure)==bool):
+        if(tenure==False or tenure == True):
             self.tenure=tenure
         else:
             print("Invalid tenure input. Input must be boolean, 0, or 1")
