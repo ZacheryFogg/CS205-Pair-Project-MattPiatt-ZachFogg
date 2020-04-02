@@ -89,7 +89,7 @@ class Course:
 
 
 # def main():
-# 	course1 = Course("default",3)
-# 	print(course1.getCredits())
+#  	course1 = Course("default",3)
+#  	print(course1.setCredits())
 
-# main()
+#  main()

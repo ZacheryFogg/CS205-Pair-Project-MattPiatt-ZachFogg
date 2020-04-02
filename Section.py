@@ -18,7 +18,7 @@ class section():
 		self.setTime(time)
 		self.setDuration (duration)
 		self.setLocation(location)
-		self.setEnrollment(enrollment)
+		self.setEnrollment(enrollment) 
 
 	#Overwriting default string method. Will only return the section character.
 	def __str__(self):
@@ -74,6 +74,7 @@ class section():
 		else:
 			for unit in timeUnits:
 				count += 1
+
 				if (unit == inputString[len(inputString) - 1] ) :
 					if (count == 1 and int(inputString[0]) <= 300): #class length should be less than 500 minutes
 						self.duration = duration
@@ -86,11 +87,10 @@ class section():
 						print("Defaulting to 0 min for duration\n\n")
 						self.duration = "0 min"
 						return
-				else:
-					print("\nUnit of measurement not found, allowed units are: min , hrs \n")
-					print("Defaulting to 0 min for duration\n\n")
-					self.duration = "0 min"
-					return
+			print("\nUnit of measurement not found, allowed units are: min , hrs \n")
+			print("Defaulting to 0 min for duration\n\n")
+			self.duration = "0 min"
+			return
 
 
 	def setLocation(self, location): #of form building classroom ex: Waterman 423

@@ -42,6 +42,10 @@ class courseAndSectionTest(unittest.TestCase):
 		self.section1.setDuration("50 min")
 		self.assertEqual(self.section1.getDuration(),"50 min")
 
+		#Should set duration to 3 hours
+		self.section1.setDuration("3 hrs")
+		self.assertEqual(self.section1.getDuration(),"3 hrs")
+
 		#Should set location to "Votey 209"
 		self.section1.setLocation("Votey 209")
 		self.assertEqual(self.section1.getLocation(), "Votey 209")
@@ -50,6 +54,7 @@ class courseAndSectionTest(unittest.TestCase):
 		self.section1.setEnrollment(40)
 		self.assertEqual(self.section1.getEnrollment(), 40)
 
+
 	def testAddSectionMethods(self):
 		#Add sections, when added length should increase by 1
 		self.course1.addSection(self.section1)
@@ -57,6 +62,8 @@ class courseAndSectionTest(unittest.TestCase):
 
 		self.course1.addSection(self.section2)
 		self.assertEqual(len(self.course1.sections), 2)
+
+		self.assertEqual(self.course1.getSections(), [self.section1, self.section2])
 
 		#remove sections, when removed length should decrease by 1
 		self.course1.removeSection(self.section2)
@@ -109,6 +116,9 @@ class courseAndSectionTest(unittest.TestCase):
 		#Invalid input for title, empty string. Should default to "course title"
 		self.course1.setCourseTitle(" ")
 		self.assertEqual(self.course1.getCourseTitle(), "course title")
+
+	def testStrCast(self):
+		self.assertEqual(str(self.section1), self.section1.section)
 
 
 

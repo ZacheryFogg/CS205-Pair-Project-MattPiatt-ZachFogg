@@ -111,3 +111,6 @@ class Simulation:
     print("\n\nAltered course: \n\n")
     self.cs127.displayCourseInfo()
     self.cs127.displayAllSections()
+
+    self.cs127Section.setDuration("3 hrs")
+    print(self.cs127Section.duration)
