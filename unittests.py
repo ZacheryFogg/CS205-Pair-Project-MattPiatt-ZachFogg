@@ -18,6 +18,7 @@ class TestModel(unittest.TestCase):
 
 
     #Zachs Objects
+    self.testUni = University.University("JustToTestTutiton", 1, "SomeWh, ere", -1,100000000, [])
     self.uvmUni = University.University("UVM", 12000, "Burlington, Vermont", 18000, 45000,[])
 
     self.cemsCol = College.College("CEMS", 2000, [],[])
@@ -47,7 +48,10 @@ class TestModel(unittest.TestCase):
 
   #---------------------Zachs UnitTesting----------------------------------
   #Testing for University Class
-  def test_UniversityIncreaseTuition(self):
+  def test_UniversityIncreaseTuitionAndSetTutition(self):
+      #Test that the private set tutuion function worked as intended
+      self.assertEqual(self.testUni.getInStateTuition(),10000)
+      self.assertEqual(self.testUni.getOutStateTuition(),10000)
       #multiplier must be 1<=x<=10
       self.uvmUni.increaseTuition(0.5)
       self.assertEqual(self.uvmUni.getInStateTuition(), 18000)
@@ -206,16 +210,17 @@ class TestModel(unittest.TestCase):
       #Test setTenure
       self.johnProf.setTenure(0)
       self.assertFalse(self.johnProf.getTenure())
-      self.johnProf.setTenure(1)
-      self.assertTrue(self.johnProf.getTenure())
       self.johnProf.setTenure(True)
       self.assertTrue(self.johnProf.getTenure())
       self.johnProf.setTenure(False)
       self.assertFalse(self.johnProf.getTenure())
+      self.johnProf.setTenure(1)
+      self.assertTrue(self.johnProf.getTenure())
       self.johnProf.setTenure("true")
       self.assertFalse(self.johnProf.getTenure())
 
 
+  #---------------------Matts UnitTesting----------------------------------
 
 
   def test_CourseSetMethods(self):
@@ -267,18 +272,6 @@ class TestModel(unittest.TestCase):
       #Check that the correct section was removed (therefore self.section1 should still be the only section)
       self.assertEqual(self.course1.sections[0], self.section1)
 
-
-
-
-
-
-
-
-
-
-
-
-  #---------------------Matts UnitTesting----------------------------------
 
 
 

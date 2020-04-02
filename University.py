@@ -119,7 +119,7 @@ class University:
     #getCollege Method, accepts the name of the college
     def getCollege(self,collegeName):
         index = self.findCollege(collegeName)
-        if(index>0 and index<len(self.collegeList)):
+        if(index>=0 and index<len(self.collegeList)):
             return self.collegeList[index]
         else:
             print("The college "+ collegeName + "was not found")
