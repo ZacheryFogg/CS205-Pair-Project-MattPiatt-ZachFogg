@@ -65,6 +65,51 @@ class courseAndSectionTest(unittest.TestCase):
 		#Check that the correct section was removed (therefore self.section1 should still be the only section)
 		self.assertEqual(self.course1.sections[0], self.section1)
 
+	def testInputValidation(self):
+		#Invalid input for professor: contains number. Default for professor is professor
+		self.section1.setProfessor("professor12")
+		self.assertEqual(self.section1.getProfessor(), "professor")
+
+		#Invalid input for section: must be one character. Should default to 'A'
+		self.section1.setSection("ABC")
+		self.assertEqual(self.section1.getSection(), "A")
+
+		#Invalid input for time: Should default to 00:00
+		self.section1.setTime("12:12:12")
+		self.assertEqual(self.section1.getTime(), "00:00")
+
+		#Invalid input for duration, wrong unit: should default to 0 min
+		self.section1.setDuration(".04 days")
+		self.assertEqual(self.section1.getDuration(), "0 min")
+
+		#Invalid input for duration, above maximum value: should default to 0 min
+		self.section1.setDuration("10000 min")
+		self.assertEqual(self.section1.getDuration(), "0 min")
+
+		#Invalid input for duration, wrong format: should default to 0 min
+		self.section1.setDuration("10 hours 20 minutes")
+		self.assertEqual(self.section1.getDuration(), "0 min")
+
+		#Invalid input for location, wrong format: should default to "Unknown 000"
+		self.section1.setLocation("2275 oak ave")
+		self.assertEqual(self.section1.getLocation(), "Unknown 000") 
+
+		#Invalid input for location, wrong format: should default to "Unknown 000"
+		self.section1.setLocation("423 Waterman")
+		self.assertEqual(self.section1.getLocation(), "Unknown 000")
+
+		#Invalid input enrollment, below zero. Should default to 0
+		self.section1.setEnrollment(-12)
+		self.assertEqual(self.section1.getEnrollment(), 0)
+
+		#Invalid input for credits, below zero. Should default to 0
+		self.course1.setCredits(-3)
+		self.assertEqual(self.course1.getCredits(), 0)
+
+		#Invalid input for title, empty string. Should default to "course title"
+		self.course1.setCourseTitle(" ")
+		self.assertEqual(self.course1.getCourseTitle(), "course title")
+
 
 
 if __name__ == '__main__':

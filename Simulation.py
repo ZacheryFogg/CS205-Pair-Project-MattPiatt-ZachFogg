@@ -101,7 +101,7 @@ class Simulation:
     #self.cs127.addSection() #Uncomment these to build section manually.
     #self.cs127.addSection()
 
-    self.cs127Section = Section.section("Professor", "B", "4:20", "50 min", "Votey 107", 54)
+    self.cs127Section = Section.section("Professor2", "BCD", "time", "duration", "location", -10)
     self.cs127.addSection(self.cs127Section)
 
     self.cs127.displaySection("A")
